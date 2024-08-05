@@ -5,7 +5,7 @@ module testbench;
 	reg clk, head, left;
   wire front, rotate;
 
-  mealy_robot MR(clk, head, left, front, rotate);
+  [nome_do_seu_modulo] MR(clk, head, left, front, rotate);
   
   initial begin
     clk = 0;
