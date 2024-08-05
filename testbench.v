@@ -5,7 +5,7 @@ module testbench;
 	reg clk, head, left;
   wire front, rotate;
 
-  [nome_do_seu_modulo] MR(clk, head, left, front, rotate);
+  mealy_robot MR(clk, head, left, front, rotate);
   
   initial begin
     clk = 0;
@@ -112,7 +112,6 @@ module testbench;
   
   task toggle_clock; begin
     #1 clk = ~clk;
-    #2 clk = ~clk;
   end endtask
 
   task step(input h, l); begin
@@ -120,6 +119,7 @@ module testbench;
     left = l;
     toggle_clock;
     display;
+    toggle_clock;
   end endtask
   	  
   task display;
