@@ -4,7 +4,7 @@ module testbench;
 	reg initial_clk, clk, head, left;
   wire front, rotate;
 
-  parameter clk_frequency = 7;
+  parameter clk_frequency = "Insira o maior dígito de sua matrícula aqui";
 
   main #(clk_frequency) main(initial_clk, clk, head, left, front, rotate);
 
