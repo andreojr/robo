@@ -1,13 +1,17 @@
-`include "./mealy.v"
-`include "./moore.v"
+`include "design.v"
 
 module testbench;
-	reg clk, head, left;
+	reg initial_clk, clk, head, left;
   wire front, rotate;
 
-  [nome_do_seu_modulo] MR(clk, head, left, front, rotate);
+  parameter clk_frequency = 7;
+
+  main #(clk_frequency) main(initial_clk, clk, head, left, front, rotate);
+
+  always #1 initial_clk <= ~initial_clk;
   
   initial begin
+    initial_clk = 0;
     clk = 0;
     step(0,0);
     step(0,0);
@@ -108,18 +112,15 @@ module testbench;
     step(1,0);
     step(0,0);
     step(0,1);
+    #1 $finish;
   end
-  
-  task toggle_clock; begin
-    #1 clk = ~clk;
-  end endtask
 
   task step(input h, l); begin
-    head = h;
-    left = l;
-    toggle_clock;
-    display;
-    toggle_clock;
+    #(clk_frequency) begin
+      head = h;
+      left = l;
+    end
+    #(clk_frequency) display;
   end endtask
   	  
   task display;
