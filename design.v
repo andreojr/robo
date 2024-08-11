@@ -1,7 +1,7 @@
 `include "modules/moore.v"
 `include "modules/counter.v"
 
-module main #(parameter clk_frequency = 7) (initial_clk, clk, head, left, front, rotate);
+module main #(parameter clk_frequency = 1) (initial_clk, clk, head, left, front, rotate);
     input initial_clk, clk, head, left;
     output front, rotate;
 
